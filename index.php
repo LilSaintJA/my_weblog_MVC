@@ -1,12 +1,24 @@
 <?php
 
-require 'Personnage.php';
+require 'Form.php';
 
-$merlin = new Personnage("Merlin");
-// -----------------------------
-// Harry est différent de $merlin
-$harry = new Personnage("Harry");
-// -----------------------------
-echo $merlin->getNom();
+$form = new Form(array(
+    'username' => 'LilSaint'
+));
+
+echo $form->input('username');
+
+echo $form->input('password');
+
+echo $form->submit();
+
+$form = new Form();
+
+echo $form->input('aze');
+echo $form->input('aze');
+echo $form->input('aze');
+echo $form->input('aze');
+echo $form->input('aze');
+echo $form->submit();
 
 ?>

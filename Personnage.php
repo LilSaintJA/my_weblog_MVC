@@ -2,8 +2,8 @@
 
 class Personnage {
 
-    public $vie;
-    public $attaque;
+    private $vie;
+    private $attaque;
     private $nom;
     protected $prenom;
 
@@ -18,6 +18,18 @@ class Personnage {
 
     public function getNom() {
         return $this->nom;
+    }
+
+    public function setNom($nom) {
+        $this->nom = $nom;
+    }
+
+    public function getVie() {
+        return $this->vie;
+    }
+
+    public function getAttaque() {
+        return $this->attaque;
     }
 
     public function crier() {
@@ -59,4 +71,8 @@ class Personnage {
 
 // --- Propriété private = inaccessible en dehors de la classe, doit passer par des getteurs
 // --- Propriété protected = équivaut à private, mais peu être hérité
+
+// --- Les Getteurs et Setteurs
+// *** Les getteurs récupére l'information
+// *** Les setteurs permettent de changer l'information de la propriété, sans manipuler la variable en elle même
 ?>
