@@ -8,9 +8,9 @@
     <body>
         <?php
         require 'class/Autoloader.php';
-        Autoloader::register();
+        \Weblog_MVC\Autoloader::register();
 
-        $form = new BootstrapForm($_POST);
+        $form = new \Weblog_MVC\HTML\BootstrapForm($_POST);
 
         ?>
 

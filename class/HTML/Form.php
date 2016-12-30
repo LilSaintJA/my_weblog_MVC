@@ -1,5 +1,7 @@
 <?php
 
+namespace Weblog_MVC\HTML;
+
 /**
 * Class Form
 * Permet de générer un formulaire rapidement et simplement
@@ -47,7 +49,7 @@ class Form {
         // Ternaire
         // return isset($this->data[$index]) ? $this->data[$index] : NULL;
     }
-    
+
     /**
     * @param $name string
     * @param string
@@ -57,7 +59,7 @@ class Form {
             '<input type="text" name="' . $name . '" value="' . $this->getValue($name) . '">'
         );
     }
-    
+
     /**
     * @param $name string
     * @param string

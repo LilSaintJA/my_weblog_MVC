@@ -1,5 +1,7 @@
 <?php
 
+namespace Weblog_MVC\HTML;
+
 class BootstrapForm extends Form {
 
     /**
@@ -29,7 +31,7 @@ class BootstrapForm extends Form {
     public function submit() {
         return '<button type="submit" class="btn btn-primary">Envoyer</button>';
     }
-    
+
     public function resetButton() {
         return '<button type="reset" class="btn btn-primary">Supprimer</button>';
     }
