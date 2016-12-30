@@ -1,24 +1,41 @@
-<?php
 
-require 'Form.php';
+<!DOCTYPE html>
 
-$form = new Form(array(
-    'username' => 'LilSaint'
-));
+<html lang="en">
 
-echo $form->input('username');
+    <head>
 
-echo $form->input('password');
+        <meta charset="UTF-8">
 
-echo $form->submit();
+        <title>Tuto PHP POO MVC</title>
 
-$form = new Form();
+    </head>
 
-echo $form->input('aze');
-echo $form->input('aze');
-echo $form->input('aze');
-echo $form->input('aze');
-echo $form->input('aze');
-echo $form->submit();
+    <body>
 
-?>
+        <?php
+
+        require 'Form.php';
+
+        $form = new Form($_POST);
+
+        ?>
+
+        <div id="page-wrapper">
+            <form action="#" method="post">
+                <?php
+
+                // Code générant les balises de la class Form
+                echo $form->input('username');
+                echo $form->input('password');
+                echo $form->submit();
+                echo $form->resetButton();
+
+                ?>
+            </form>
+        </div>
+
+    </body>
+
+</html>
+

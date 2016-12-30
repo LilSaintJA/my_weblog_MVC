@@ -1,0 +1,26 @@
+[
+    {
+        "label": "grunt serve",
+        "cmd": "grunt serve",
+        "key": "F9",
+        "args": []
+    },
+    {
+        "label": "grunt jshint",
+        "cmd": "grunt jshint",
+        "key": "F8",
+        "args": []
+    },
+    {
+        "label": "grunt build",
+        "cmd": "grunt build",
+        "key": "F7",
+        "args": []
+    },
+    {
+        "label": "Générer la documentation",
+        "cmd": "php 'C:\Users\Pamela\Downloads\phpDocumentor-2.9.0\bin\phpdoc.php'",
+        "key": "F4",
+        "args": []
+    }
+]

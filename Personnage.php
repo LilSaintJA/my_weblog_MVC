@@ -1,33 +1,64 @@
 <?php
 
+/**
+* Class Personnage
+* Permet de créer un personnage
+*/
 class Personnage {
 
-    private $vie;
-    private $attaque;
-    private $nom;
-    protected $prenom;
+    /**
+    * @const int Défint le mximum de la vie du perso
+    */
+    const MAX_VIE = 100;
 
-    public function __construct($name = NULL, $life = 80, $att = 20) {
+
+    /**
+    * @var string Définit l'identité du perso et ces attributs
+    */
+    protected $prenom;
+    protected $nom;
+    protected $vie;
+    protected $attaque;
+
+    /**
+    * @param string|int Données utilisées par le personnage
+    */
+    public function __construct($prenom = NULL, $name = NULL, $life = 80, $att = 20) {
         // Initialisation du param dans l'objet courant *** Je sauvegarde mon param dans l'objet $this
+        $this->prenom = $prenom;
         $this->nom = $name; 
         $this->vie = $life;
         $this->attaque = $att;
     }
 
-    // """***""" GETTEURS & SETTEURS """***"""
-
+    /**
+    * @param string Nom du personnage
+    * @param string
+    */
     public function getNom() {
         return $this->nom;
     }
 
+    /**
+    * @param string Nom du personnage
+    * @param string
+    */
     public function setNom($nom) {
         $this->nom = $nom;
     }
 
+    /**
+    * @param int Vie du personnage
+    * @param int
+    */
     public function getVie() {
         return $this->vie;
     }
 
+    /**
+    * @param string Nom du personnage
+    * @param string
+    */
     public function getAttaque() {
         return $this->attaque;
     }
@@ -38,7 +69,7 @@ class Personnage {
 
     public function regenerate($gain = NULL) {
         if(is_null($gain)) {
-            $this->vie = 80;
+            $this->vie = self::MAX_VIE;
         } else {
             $this->vie = $this->vie + $gain; // this fait référence à l'objet en cours.
         }
@@ -49,7 +80,7 @@ class Personnage {
         return $this->vie <= 0;
     }
 
-    private function empecher_negatif() {
+    protected function empecher_negatif() {
         if($this->vie < 0) {
             $this->vie = 0;
         }
