@@ -1,7 +1,8 @@
 <?php
+namespace Weblog_MVC;
 
-require 'Personnage.php';
-require 'Archer.php';
+require 'class/Autoloader.php';
+Autoloader::register();
 
 $merlin = new Personnage('Merlin');
 $harry = new Personnage('Harry', 'Potter');

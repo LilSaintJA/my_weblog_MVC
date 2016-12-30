@@ -71,6 +71,7 @@ class Form {
     public function resetButton() {
         return $this->surround('<button type="reset">Supprimer</button>');
     }
+
 }
 
 // protected function getValue($index) {

@@ -1,4 +1,5 @@
 <?php
+namespace Weblog_MVC;
 
 class Text {
 

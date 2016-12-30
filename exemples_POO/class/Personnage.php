@@ -1,5 +1,7 @@
 <?php
 
+namespace Weblog_MVC;
+
 /**
 * Class Personnage
 * Permet de créer un personnage
