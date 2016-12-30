@@ -1,23 +1,17 @@
-
 <!DOCTYPE html>
-
 <html lang="en">
-
     <head>
-
         <meta charset="UTF-8">
-
+        <link rel="stylesheet" href="assets/styles/bootstrap.css">
         <title>Tuto PHP POO MVC</title>
-
     </head>
-
     <body>
-
         <?php
 
         require 'Form.php';
+        require 'BootstrapForm.php';
 
-        $form = new Form($_POST);
+        $form = new BootstrapForm($_POST);
 
         ?>
 
@@ -34,8 +28,5 @@
                 ?>
             </form>
         </div>
-
     </body>
-
 </html>
-

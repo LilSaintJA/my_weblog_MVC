@@ -9,7 +9,7 @@ class Form {
     /**
     * @var array Données utilisées par le formulaire
     */
-    private $data;
+    protected $data;
 
     /**
     * @var string Tag utlisés pour entourer les champs
@@ -27,7 +27,7 @@ class Form {
     * @param $html string Code HTML entourer
     * @param string
     */
-    private function surround($html) {
+    protected function surround($html) {
         // Les {} sont nécessaires pour que le code soit interprété par les doubles ""
         return "<{$this->paragraphe}>{$html}</{$this->paragraphe}>";
 
@@ -37,7 +37,7 @@ class Form {
     * @param $index string Index de la valeur à récupérer
     * @param string
     */
-    private function getValue($index) {
+    protected function getValue($index) {
         if(isset($this->data[$index])) {
             return $this->data[$index];
         } else {
@@ -71,7 +71,7 @@ class Form {
     }
 }
 
-// private function getValue($index) {
+// protected function getValue($index) {
 //        return $this->data[$index];
 //    }
 // --- $this->data = contient toutes les données passé en param de mon construct
