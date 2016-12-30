@@ -1,3 +1,7 @@
+<?php
+use \Weblog_MVC\HTML\BootstrapForm;
+use \Weblog_MVC\Autoloader;
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,9 +12,9 @@
     <body>
         <?php
         require 'class/Autoloader.php';
-        \Weblog_MVC\Autoloader::register();
+        Autoloader::register();
 
-        $form = new \Weblog_MVC\HTML\BootstrapForm($_POST);
+        $form = new BootstrapForm($_POST);
 
         ?>
 
