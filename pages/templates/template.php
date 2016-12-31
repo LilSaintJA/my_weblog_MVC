@@ -8,30 +8,27 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="../../favicon.ico">
-
         <title>Starter Template for Bootstrap</title>
-
         <!-- Bootstrap core CSS -->
         <link href="../public/styles/bootstrap.css" rel="stylesheet">
-
     </head>
-
     <body>
-
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.php">Project name</a>
+                    <a class="navbar-brand" href="index.php">Accueil</a>
+                    <a class="navbar-brand" href="index.php">Critiques</a>
+                    <a class="navbar-brand" href="index.php">Bilans</a>
+                    <a class="navbar-brand" href="index.php">Séries Cultes</a>
+                    <a class="navbar-brand" href="index.php">Mini-Séries</a>
                 </div>
             </div><!-- /.container -->
         </nav>
 
         <div class="container">
-
             <div class="starter-template" style="padding-top: 100px;">
                 <?= $content;?>
             </div>
-
         </div><!-- /.container -->
     </body>
 </html>
