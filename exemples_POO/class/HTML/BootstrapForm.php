@@ -25,8 +25,8 @@ class BootstrapForm extends Form {
     }
 
     /**
-    * @param $name string
-    * @param string
+    * @param void
+    * @param void
     */
     public function submit() {
         return '<button type="submit" class="btn btn-primary">Envoyer</button>';

@@ -9,11 +9,13 @@ if(isset($_GET['p'])) {
     $p = 'home';
 }
 
-ob_start();
+// Initialisation des objets
+$db = new App\Database('test_blog');
 
+ob_start();
 if($p === 'home') {
     require '../pages/home.php';
-} elseif($p === 'single') {
+} elseif($p === 'article') {
     require '../pages/single.php';
 }
 
@@ -22,3 +24,7 @@ $content = ob_get_clean();
 require '../pages/templates/template.php';
 
 ?>
+
+
+<!--ul#mainMenu>li.items*4>{test list $}-->
+<!--p*4>lorem-->

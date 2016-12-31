@@ -12,7 +12,7 @@
         <title>Starter Template for Bootstrap</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="../assets/styles/bootstrap.css" rel="stylesheet">
+        <link href="../public/styles/bootstrap.css" rel="stylesheet">
 
     </head>
 
@@ -21,7 +21,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Project name</a>
+                    <a class="navbar-brand" href="index.php">Project name</a>
                 </div>
             </div><!-- /.container -->
         </nav>
@@ -29,9 +29,7 @@
         <div class="container">
 
             <div class="starter-template" style="padding-top: 100px;">
-                <!-- Je comprend pas -->
                 <?= $content;?>
-                <!-- Je comprend pas -->
             </div>
 
         </div><!-- /.container -->
