@@ -1,3 +1,4 @@
+<!-- Page Article -->
 <?php
 $post = $db->prepare("SELECT * FROM billet WHERE id_post = ?", [$_GET['id_post']], 'App\Tables\Articles', TRUE);
 ?>

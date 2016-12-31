@@ -1,3 +1,4 @@
+<!-- Page Home -->
 <?php
 $req = "SELECT * FROM billet";
 $reponse = $db->query($req, 'App\Tables\Articles');
