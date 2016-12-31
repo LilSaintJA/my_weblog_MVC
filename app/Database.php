@@ -71,9 +71,8 @@ class Database {
 
 }
 
+//<!-- **************************** -->
+//<!-- *** $connectBDD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); *** -->
+//<!-- Permet de debug PDO et renvoie les erreurs et les exceptions concernant la requête -->
+
 ?>
-
-
-<!-- **************************** -->
-<!-- *** $connectBDD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); *** -->
-<!-- Permet de debug PDO et renvoie les erreurs et les exceptions concernant la requête -->
