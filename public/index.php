@@ -1,3 +1,4 @@
+<!-- Index du site -->
 <?php
 // Chargement de l'autoloader
 require '../app/Autoloader.php';
