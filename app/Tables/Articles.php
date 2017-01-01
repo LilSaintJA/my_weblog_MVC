@@ -1,11 +1,18 @@
 <?php
 namespace App\Tables;
 
+use App\Appli;
+
 /**
 * Class Articles
 * Permet de gérer l'affichage des articles
 */
 class Articles {
+    
+    public static function getLast() {
+        $req = "SELECT * FROM billet";
+        return Appli::getDB()->query($req, __CLASS__);
+    }
 
     /**
     * Permet d'appeler un propriétes qui n'existe pas en appelant sa méthode
