@@ -15,7 +15,7 @@ class Articles {
     * @return {class} 
     */
     public static function getLast() {
-        $req = "SELECT * FROM billet";
+        $req = "SELECT * FROM billet LEFT JOIN categories ON billet.id_cat = categories.id_cat";
         return Appli::getDB()->query($req, __CLASS__);
     }
 
