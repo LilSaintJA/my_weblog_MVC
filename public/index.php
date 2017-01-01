@@ -10,14 +10,15 @@ if(isset($_GET['p'])) {
     $p = 'home';
 }
 
-// Initialisation des objets
-$db = new App\Database('test_blog');
-
 ob_start();
 if($p === 'home') {
     require '../pages/home.php';
 } elseif($p === 'article') {
     require '../pages/single.php';
+} elseif ($p === 'categorie') {
+    require '../pages/categorie.php';
+} elseif ($p === 'login') {
+    require '../pages/login.php';
 }
 
 // Permet de stocker les require dans la variable $content
