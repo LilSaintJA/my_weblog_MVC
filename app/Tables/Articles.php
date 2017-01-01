@@ -9,6 +9,11 @@ use App\Appli;
 */
 class Articles {
     
+    /**
+    * Permet de faire une requête à la BDD
+    * @param void 
+    * @return {class} 
+    */
     public static function getLast() {
         $req = "SELECT * FROM billet";
         return Appli::getDB()->query($req, __CLASS__);
@@ -17,6 +22,7 @@ class Articles {
     /**
     * Permet d'appeler un propriétes qui n'existe pas en appelant sa méthode
     * @param {string} 
+    * @return {instance->object} 
     */
     public function __get($key) {
         //        var_dump('Method magique __get called');
