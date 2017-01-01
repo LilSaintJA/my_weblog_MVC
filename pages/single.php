@@ -1,6 +1,6 @@
 <!-- Page Article -->
 <?php
-$post = $db->prepare("SELECT * FROM billet WHERE id_post = ?", [$_GET['id_post']], 'App\Tables\Articles', TRUE);
+$post = App\Appli::getDB()->prepare("SELECT * FROM billet WHERE id_post = ?", [$_GET['id_post']], 'App\Tables\Articles', TRUE);
 ?>
 
 <h1><?= $post->titre_post; ?></h1>
