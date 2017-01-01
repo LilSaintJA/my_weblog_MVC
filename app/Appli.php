@@ -20,7 +20,11 @@ class Appli {
     */
     private static $database;
 
-    public static function getDatabase() {
+    /**
+    * @return $database {const} Retourne la connection à la BDD
+    * @return $database
+    */
+    public static function getDB() {
         if(self::$database === NULL) {
             self::$database = new Database(self::DB_NAME, self::DB_USER, self::DB_PASS, self::DB_HOST);
 
