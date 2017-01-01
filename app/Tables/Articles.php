@@ -7,7 +7,7 @@ use App\Appli;
 * Class Articles
 * Permet de gérer l'affichage des articles
 */
-class Articles {
+class Articles extends Table {
     
     /**
     * Permet de faire une requête à la BDD
@@ -17,19 +17,6 @@ class Articles {
     public static function getLast() {
         $req = "SELECT * FROM billet LEFT JOIN categories ON billet.id_cat = categories.id_cat";
         return Appli::getDB()->query($req, __CLASS__);
-    }
-
-    /**
-    * Permet d'appeler un propriétes qui n'existe pas en appelant sa méthode
-    * @param {string} 
-    * @return {instance->object} 
-    */
-    public function __get($key) {
-        //        var_dump('Method magique __get called');
-        $method = 'get' . ucfirst($key);
-        $this->$key = $this->$method();
-        return $this->$key;
-
     }
 
     /**
