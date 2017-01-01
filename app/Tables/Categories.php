@@ -7,17 +7,16 @@ use App\Appli;
 * Class Categories
 * Permet de lister toutes les catégories des articles
 */
-class Categories {
+class Categories extends Table {
 
     private static $table = 'categories';
-
+    
     /**
-     * Liste toutes les catégories des articles
-     * @return object PDO Exécute une requête SQL
-     */
-    public static function all() {
-        $req = "SELECT * FROM " . self::$table . "";
-        return Appli::getDB()->query($req, __CLASS__);
+    * Permet de retourner l'url
+    * @param void 
+    */
+    public function getUrl() {
+        return 'index.php?p=categories&id_post=' . $this->id_cat;
     }
 
 }
