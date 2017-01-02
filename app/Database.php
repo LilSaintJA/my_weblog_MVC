@@ -49,11 +49,18 @@ class Database {
     * @param $tatementPDO Permet de faire les requêtes à la BDD
     * @param $tatementPDO
     */
-    public function query($statement, $class_name) {
+    public function query($statement, $class_name, $one = FALSE) {
         //        $req = "SELECT * FROM billet";
         $req = $this->getPDO()->query(($statement));
-        $data = $req->fetchAll(PDO::FETCH_CLASS, $class_name);
-        return $data;
+        $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        //        $datas = $req->fetchAll(PDO::FETCH_CLASS, $class_name);
+        if($one) {
+            $datas = $req->fetch();
+        } else {
+            $datas = $req->fetchAll();
+
+        }
+        return $datas;
     }
 
     public function prepare($statement, $options, $class_name, $one = FALSE) {

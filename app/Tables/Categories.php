@@ -9,14 +9,14 @@ use App\Appli;
 */
 class Categories extends Table {
 
-    private static $table = 'categories';
+    protected static $table = 'categories';
     
     /**
     * Permet de retourner l'url
     * @param void 
     */
     public function getUrl() {
-        return 'index.php?p=categories&id_post=' . $this->id_cat;
+        return 'index.php?p=categorie&id_cat=' . $this->id_cat;
     }
 
 }

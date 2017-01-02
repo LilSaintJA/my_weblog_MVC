@@ -1,9 +1,23 @@
-<!-- Page Home -->
+<?php
+
+use \App\Tables\Categories;
+use App\Tables\Articles;
+
+$categorie = Categories::find($_GET['id_cat']);
+if($categorie === FALSE) {
+    header('HTTP/1.0 404 Not Found');
+}
+$articles = Articles::lastByCat($_GET['id_cat']);
+$categories = Categories::all();
+?>
+
+
+<!-- Page Categories -->
+<h1><?= $categorie->titre_cat ?></h1>
 <div class="row">
     <div class="col-sm-8">
         <?php
-        $reponse = \App\Tables\Articles::getLast();
-        foreach($reponse as $post):?>
+        foreach($articles as $post):?>
 
         <a href="<?= $post->url ?>"><h2><?= $post->titre_post; ?></h2></a>
         <span><?= $post->titre_cat ?></span>

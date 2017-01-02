@@ -8,15 +8,25 @@ use App\Appli;
 * Permet de gérer l'affichage des articles
 */
 class Articles extends Table {
-    
+
     /**
     * Permet de faire une requête à la BDD
     * @param void 
-    * @return {class} 
+    * @return {function} Retourne la fonction static query de la class Articles 
     */
     public static function getLast() {
         $req = "SELECT * FROM billet LEFT JOIN categories ON billet.id_cat = categories.id_cat";
-        return Appli::getDB()->query($req, __CLASS__);
+        return self::query($req);
+    }
+
+    /**
+     * Permet de lister tout les articles d'une catégorie
+     * @param  $_GET $id_cat ID de la catégorie
+     * @return {function} Retourne la fonction static query de la class Articles
+     */
+    public static function lastByCat($id_cat) {
+        $req = "SELECT * FROM billet LEFT JOIN categories ON billet.id_cat = categories.id_cat WHERE billet.id_cat = ?";
+        return self::query($req, [$id_cat]);
     }
 
     /**
