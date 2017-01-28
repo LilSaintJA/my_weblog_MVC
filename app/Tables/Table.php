@@ -24,8 +24,16 @@ class Table {
         return static::$table;
     }
 
+    
     /**
      * Permet de faire une requête SQL
+     * @param  [[Type]] $statement           [[Description]]
+     * @param  [[Type]] [$attributes = NULL] [[Description]]
+     * @param  [[Type]] [$one = FALSE]       [[Description]]
+     * @return [[Type]] [[Description]]
+     */
+    /**
+     * 
      * @param  SQL      $statement           Contient la requête SQL
      * @param  [[Type]] [$attributes = NULL] [[Description]]
      * @param  [[Type]] [$one = FALSE]       [[Description]]
@@ -39,10 +47,11 @@ class Table {
         }
     }
 
+    
     /**
      * Permet de lister toutes les catégories
-     * @param  $_GET $id Correspond à l'id de la catégorie
-     * @return {function} Retourne la fonction static getDB de la class Appli
+     * @param  [string || Integer] $id [Correspond à l'id de la catégorie]
+     * @return {methode} [Une requête préparé]
      */
     public static function find($id) {
         $req = "SELECT * FROM " . static::getTable() . " WHERE id_cat = ?";
@@ -51,7 +60,8 @@ class Table {
 
     /**
      * Sélectionne tout dans une table
-     * @return {object PDO} Retourne le query de PDO
+     * @param [void]
+     * @return {object PDO} Retourne le result de la requête
      */
     public static function all() {
         $req = "SELECT * FROM " . static::getTable() . "";
@@ -60,7 +70,7 @@ class Table {
 
     /**
     * Méthode magique permettant d'appeler la méthode url
-    * @param {string} 
+    * @param {string} $key
     * @return {instance->object} 
     */
     public function __get($key) {
