@@ -19,6 +19,8 @@ if($p === 'home') {
     require '../pages/categorie.php';
 } elseif ($p === 'login') {
     require '../pages/login.php';
+} elseif ($p === '404') {
+    require '../pages/page404.php';
 }
 
 // Permet de stocker les require dans la variable $content

@@ -5,12 +5,11 @@ use App\Tables\Articles;
 
 $categorie = Categories::find($_GET['id_cat']);
 if($categorie === FALSE) {
-    header('HTTP/1.0 404 Not Found');
+    \App\Appli::notFound();
 }
 $articles = Articles::lastByCat($_GET['id_cat']);
 $categories = Categories::all();
 ?>
-
 
 <!-- Page Categories -->
 <h1><?= $categorie->titre_cat ?></h1>

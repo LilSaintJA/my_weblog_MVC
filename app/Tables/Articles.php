@@ -4,10 +4,25 @@ namespace App\Tables;
 use App\Appli;
 
 /**
-* Class Articles
+* Class fille Articles qui hérite de la class parente Table
 * Permet de gérer l'affichage des articles
 */
 class Articles extends Table {
+
+    protected static $table = 'articles';
+
+    /**
+     * Permet de lister toutes les catégories
+     * @param  [string || Integer] $id [Correspond à l'id de la catégorie]
+     * @return {methode} [Une requête préparé]
+     */
+    public static function find($id) {
+        $req = "SELECT id_post, titre_post, content_post, categories.titre_cat 
+        FROM articles 
+        LEFT JOIN categories ON articles.id_cat = categories.id_cat
+        WHERE articles.id_post = ?";
+        return self::query($req, [$id], TRUE);
+    }
 
     /**
     * Permet de faire une requête à la BDD -> Récupère les derniers articles
@@ -16,19 +31,18 @@ class Articles extends Table {
     */
     public static function getLast() {
         $req = "SELECT id_post, titre_post, content_post, categories.titre_cat 
-        FROM billet 
-        LEFT JOIN categories 
-            ON billet.id_cat = categories.id_cat";
+        FROM articles 
+        LEFT JOIN categories ON articles.id_cat = categories.id_cat";
         return self::query($req);
     }
 
     /**
      * Permet de lister tout les articles d'une catégorie
-     * @param  $_GET $id_cat ID de la catégorie
-     * @return {function} Retourne la fonction static query de la class Articles
+     * @param  [string || Integer] $id_cat [[Description]]
+     * @return [statement] Retourne le jeu de résultat trouvé par query
      */
     public static function lastByCat($id_cat) {
-        $req = "SELECT * FROM billet LEFT JOIN categories ON billet.id_cat = categories.id_cat WHERE billet.id_cat = ?";
+        $req = "SELECT * FROM articles LEFT JOIN categories ON articles.id_cat = categories.id_cat WHERE articles.id_cat = ?";
         return self::query($req, [$id_cat]);
     }
 
@@ -45,7 +59,6 @@ class Articles extends Table {
     * @param void 
     */
     public function getExtrait() {
-
         $html = '<p>' . substr($this->content_post, 0, 255) . '...</p>';
         $html .= '<p><a href="' . $this->getUrl() . '">Voir la suite</p></a>';
 
