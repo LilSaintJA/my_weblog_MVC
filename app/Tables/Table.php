@@ -12,20 +12,6 @@ class Table {
     protected static $table;
 
     /**
-     * Récupére et Génére dynamiquement le nom de la table
-     * @return {static::var} Retourne le nom de la table
-     */
-    private static function getTable() {
-        if(static::$table === NULL) {
-            // Récupére les différents param
-            // Il faut que le nom de la class soit identique aux nom de la table
-            $class_name = explode('\\', get_called_class());
-            static::$table = strtolower(end($class_name));
-        }
-        return static::$table;
-    }
-
-    /**
      * Permet de faire une requête SQL
      * @param  [requête] $statement           Représente la requête préparée et executée
      * @param  [bool]   [$attributes = NULL] [Représente l'attribut]
@@ -38,6 +24,20 @@ class Table {
         } else {
             return Appli::getDB()->query($statement, get_called_class(), $one);
         }
+    }
+
+    /**
+     * Récupére et Génére dynamiquement le nom de la table
+     * @return {static::var} Retourne le nom de la table
+     */
+    private static function getTable() {
+        if(static::$table === NULL) {
+            // Récupére les différents param
+            // Il faut que le nom de la class soit identique aux nom de la table
+            $class_name = explode('\\', get_called_class());
+            static::$table = strtolower(end($class_name));
+        }
+        return static::$table;
     }
 
     /**
@@ -67,8 +67,6 @@ class Table {
     */
     public function __get($key) {
         $method = 'get' . ucfirst($key);
-        //        var_dump($method);
-        //        var_dump($key);
         $this->$key = $this->$method();
         return $this->$key;
     }

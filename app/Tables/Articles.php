@@ -42,7 +42,10 @@ class Articles extends Table {
      * @return [statement] Retourne le jeu de résultat trouvé par query
      */
     public static function lastByCat($id_cat) {
-        $req = "SELECT * FROM articles LEFT JOIN categories ON articles.id_cat = categories.id_cat WHERE articles.id_cat = ?";
+        $req = "SELECT id_post, titre_post, content_post, categories.titre_cat 
+        FROM articles 
+        LEFT JOIN categories ON articles.id_cat = categories.id_cat
+        WHERE categories.id_cat = ?";
         return self::query($req, [$id_cat]);
     }
 

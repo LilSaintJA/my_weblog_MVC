@@ -30,5 +30,10 @@
                 <?= $content;?>
             </div>
         </div><!-- /.container -->
+        <div class="container">
+            <footer id="main-footer" class="main-footer panel-footer">
+                <span>&copy; LilSaint - Web@cademie</span>
+            </footer>
+        </div><!-- /.container -->
     </body>
 </html>

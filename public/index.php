@@ -14,7 +14,7 @@ ob_start();
 if($p === 'home') {
     require '../pages/home.php';
 } elseif($p === 'article') {
-    require '../pages/single.php';
+    require '../pages/article.php';
 } elseif ($p === 'categorie') {
     require '../pages/categorie.php';
 } elseif ($p === 'login') {

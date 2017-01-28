@@ -4,9 +4,11 @@ use \App\Tables\Categories;
 use App\Tables\Articles;
 
 $categorie = Categories::find($_GET['id_cat']);
+
 if($categorie === FALSE) {
     \App\Appli::notFound();
 }
+
 $articles = Articles::lastByCat($_GET['id_cat']);
 $categories = Categories::all();
 ?>
@@ -16,15 +18,13 @@ $categories = Categories::all();
 <div class="row">
     <div class="col-sm-8">
         <?php
-        foreach($articles as $post):?>
+    foreach($articles as $post):?>
 
         <a href="<?= $post->url ?>"><h2><?= $post->titre_post; ?></h2></a>
         <span><?= $post->titre_cat ?></span>
-
         <p>
             <?= $post->getExtrait(); ?>
         </p>
-
         <?php endforeach; ?>
     </div>
     <div class="col-sm-4">
