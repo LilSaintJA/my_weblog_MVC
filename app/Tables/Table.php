@@ -4,33 +4,24 @@ namespace App\Tables;
 use App\Appli;
 
 /**
-* Class Table
-* Permet de gérer l'affichage des articles
+* Class Parent Table 
+* Permet de gérer l'affichage des tables
 */
 class Table {
 
     protected static $table;
 
     /**
-     * Génére dynamiquement le nom de la table
+     * Récupére et Génére dynamiquement le nom de la table
      * @return {static::var} Retourne le nom de la table
      */
     private static function getTable() {
         if(static::$table === NULL) {
+            // Récupére les différents param
             $class_name = explode('\\', get_called_class());
             static::$table = strtolower(end($class_name));
         }
         return static::$table;
-    }
-
-    /**
-     * Permet de lister toutes les catégories
-     * @param  $_GET $id Correspond à l'id de la catégorie
-     * @return {function} Retourne la fonction static getDB de la class Appli
-     */
-    public static function find($id) {
-        $req = "SELECT * FROM " . static::getTable() . " WHERE id_cat = ?";
-        return Appli::getDB()->prepare($req, [$id], get_called_class(), TRUE);
     }
 
     /**
@@ -46,6 +37,16 @@ class Table {
         } else {
             return Appli::getDB()->query($statement, get_called_class(), $one);
         }
+    }
+
+    /**
+     * Permet de lister toutes les catégories
+     * @param  $_GET $id Correspond à l'id de la catégorie
+     * @return {function} Retourne la fonction static getDB de la class Appli
+     */
+    public static function find($id) {
+        $req = "SELECT * FROM " . static::getTable() . " WHERE id_cat = ?";
+        return Appli::getDB()->prepare($req, [$id], get_called_class(), TRUE);
     }
 
     /**

@@ -10,12 +10,15 @@ use App\Appli;
 class Articles extends Table {
 
     /**
-    * Permet de faire une requête à la BDD
+    * Permet de faire une requête à la BDD -> Récupère les derniers articles
     * @param void 
     * @return {function} Retourne la fonction static query de la class Articles 
     */
     public static function getLast() {
-        $req = "SELECT * FROM billet LEFT JOIN categories ON billet.id_cat = categories.id_cat";
+        $req = "SELECT id_post, titre_post, content_post, categories.titre_cat 
+        FROM billet 
+        LEFT JOIN categories 
+            ON billet.id_cat = categories.id_cat";
         return self::query($req);
     }
 

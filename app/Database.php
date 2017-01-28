@@ -50,15 +50,12 @@ class Database {
     * @param $tatementPDO
     */
     public function query($statement, $class_name, $one = FALSE) {
-        //        $req = "SELECT * FROM billet";
         $req = $this->getPDO()->query(($statement));
         $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
-        //        $datas = $req->fetchAll(PDO::FETCH_CLASS, $class_name);
         if($one) {
             $datas = $req->fetch();
         } else {
             $datas = $req->fetchAll();
-
         }
         return $datas;
     }
@@ -77,9 +74,4 @@ class Database {
     }
 
 }
-
-//<!-- **************************** -->
-//<!-- *** $connectBDD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); *** -->
-//<!-- Permet de debug PDO et renvoie les erreurs et les exceptions concernant la requête -->
-
 ?>

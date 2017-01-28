@@ -3,7 +3,7 @@ namespace App;
 
 /**
 * Class Database
-* Permet de charger les configurations à la BDD
+* Permet de sauvegarder les configurations à la BDD
 */
 class Appli {
 

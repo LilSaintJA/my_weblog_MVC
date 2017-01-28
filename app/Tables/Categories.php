@@ -12,7 +12,7 @@ class Categories extends Table {
     protected static $table = 'categories';
     
     /**
-    * Permet de retourner l'url
+    * Permet de retourner l'url de la categories
     * @param void 
     */
     public function getUrl() {

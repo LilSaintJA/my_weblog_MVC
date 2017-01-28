@@ -2,7 +2,10 @@
 <div class="row">
     <div class="col-sm-8">
         <?php
+        // Récupère les derniers articles charger par la class Articles
         $reponse = \App\Tables\Articles::getLast();
+
+        // Liste les derniers articles
         foreach($reponse as $post):?>
 
         <a href="<?= $post->url ?>"><h2><?= $post->titre_post; ?></h2></a>
