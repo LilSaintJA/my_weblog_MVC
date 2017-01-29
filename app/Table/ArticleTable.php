@@ -19,7 +19,7 @@ class ArticleTable extends Table {
     /**
      * Récupère un article en liant la catégorie associé
      * @param  [int] $id [ID récupèrer par le $_GET]
-     * @return [object] [Une requête préparer] \App\Entity\ArticleEntity
+     * @return [object] [Une requête préparer] \App\Entity\ArticleEntitygit 
      */
     public function find($id) {
         $req = "SELECT id, titre_post, content_post, categories.titre_cat 
