@@ -1,5 +1,5 @@
 <?php
-namespace App\Database;
+namespace Core\Database;
 
 // Permet de ne pas mettre un \ devant tout les PDO
 use \PDO;

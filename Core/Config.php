@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Core;
 
 // Singleton, class instancier qu'une fois dans l'appli
 // Permet de régler les problémes d'héritage et de construct des class static
@@ -27,9 +27,9 @@ class Config {
      * Constructeur de l'objet
      * @private Initialise le fichier config.php contenant les infos de la BDD
      */
-    public function __construct() {
+    public function __construct($file) {
         $this->id = uniqid();
-        $this->settings = require dirname(__DIR__) . '/config/config.php';
+        $this->settings = require_once($file);
     }
 
     /**

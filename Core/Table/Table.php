@@ -1,6 +1,6 @@
 <?php
-namespace App\Tables;
-use \App\Database\Database;
+namespace Core\Tables;
+use \Core\Database\Database;
 
 class Table {
 
@@ -12,6 +12,7 @@ class Table {
      * Si le nom de la table n'est pas définit dans l'enfant, l'initialise
      * Sinon récupére le nom de la class définti dans l'enfant
      * @private
+     * @param [object] Database $db [Prend en paramétre la BDD]
      */
     public function __construct(Database $db) {
         $this->db = $db;
