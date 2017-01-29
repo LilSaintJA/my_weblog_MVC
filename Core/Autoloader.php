@@ -16,7 +16,7 @@ class Autoloader {
         ));
     }
 
-    
+
     /**
      * Permet de gérer le chargement des Class
      * @param [string] $php_class [La class à charger]

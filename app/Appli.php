@@ -1,6 +1,6 @@
 <?php
 use Core\Config;
-use Core\Database\MysqlDatabase;
+use \Core\Database\MysqlDatabase;
 
 /**
 * Class Appli 
@@ -45,7 +45,7 @@ class Appli {
      * @return [string] [Retourne le nom de la class sans le namespace]
      */
     public function getTable($name) {
-        $class_name = '\\App\\Tables\\' . ucfirst($name) . 'Table';
+        $class_name = '\\App\\Table\\' . ucfirst($name) . 'Table';
         return new $class_name($this->getDB());
     }
 
@@ -59,6 +59,11 @@ class Appli {
             $this->db_instance = new MysqlDatabase($config->get('db_name'), $config->get('db_user'), $config->get('db_pass'), $config->get('db_host'));
         }
         return $this->db_instance;
+    }
+    
+    public function notFound() {
+        header("HTTP/1.0 404 Not Found");
+        header('Location:index.php?p=404');
     }
 
 }
