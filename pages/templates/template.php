@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="../../favicon.ico">
-        <title>Starter Template for Bootstrap</title>
+        <title><?= App\Appli::getTitle(); ?></title>
         <!-- Bootstrap core CSS -->
         <link href="../public/styles/bootstrap.css" rel="stylesheet">
     </head>

@@ -7,33 +7,46 @@ namespace App;
 */
 class Appli {
 
-    /**
-    * @const {string} Permet de récupérer les données pour la connection à la BDD
-    */
-    const DB_NAME = 'test_blog';
-    const DB_USER = 'root';
-    const DB_PASS = '';
-    const DB_HOST = 'localhost';
+    public $title = 'Mon super site';
+    private $db_instance;
+    private static $_instance;
 
     /**
-    * @var {object} Récupére les infos de connection à la BDD
-    */
-    private static $database;
-
-    /**
-     * Initialise la connection à la BDD
-     * @return [bool] $database [[Description]]
+     * Instancie l'objet
+     * @return [object] [Retourne une instance de l'objet]
      */
-    public static function getDB() {
-        if(self::$database === NULL) {
-            self::$database = new Database(self::DB_NAME, self::DB_USER, self::DB_PASS, self::DB_HOST);
+    public static function getInstance() {
+        // Permet d'instancier l'object qu'une seule fois
+        if (is_null(self::$_instance)) {
+            return self::$_instance = New Appli();
         }
-        return self::$database;
+
+        return self::$_instance;
     }
-    
-    public static function notFound() {
-        header("HTTP/1.0 404 Not Found");
-        header('Location:index.php?p=404');
+
+    // *** Systéme de Factory
+
+    /**
+     * Récupére le nom de la table
+     * @param  [string] $name [Le nom de la class lors de l'initialisation de l'objet]
+     * @return [string] [Retourne le nom de la class sans le namespace]
+     */
+    public function getTable($name) {
+        //        var_dump($name);
+        $class_name = '\\App\\Tables\\' . ucfirst($name) . 'Table';
+        return new $class_name();
+    }
+
+    /**
+     * Retourne une instance de la BDD
+     * @return [object] [Retourne une instance de la class Database]
+     */
+    public function getDB() {
+        $config = Config::getInstance();
+        if (is_null($this->db_instance)) {
+            $this->db_instance = new Database($config->get('db_name'), $config->get('db_user'), $config->get('db_pass'), $config->get('db_host'));
+        }
+        return $this->db_instance;
     }
 }
 

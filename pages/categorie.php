@@ -1,5 +1,6 @@
 <?php
 
+use App\Appli;
 use \App\Tables\Categories;
 use App\Tables\Articles;
 
@@ -11,6 +12,8 @@ if($categorie === FALSE) {
 
 $articles = Articles::lastByCat($_GET['id_cat']);
 $categories = Categories::all();
+
+Appli::setTitle($categorie->titre_cat);
 ?>
 
 <!-- Page Categories -->

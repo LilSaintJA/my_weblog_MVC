@@ -4,28 +4,48 @@
 require '../app/Autoloader.php';
 App\Autoloader::register();
 
-if(isset($_GET['p'])) {
-    $p = $_GET['p'];
-} else {
-    $p = 'home';
-}
+// *** nouvel index.php en utilisant le fichier Config.php
 
-ob_start();
-if($p === 'home') {
-    require '../pages/home.php';
-} elseif($p === 'article') {
-    require '../pages/article.php';
-} elseif ($p === 'categorie') {
-    require '../pages/categorie.php';
-} elseif ($p === 'login') {
-    require '../pages/login.php';
-} elseif ($p === '404') {
-    require '../pages/page404.php';
-}
+$appli = App\Appli::getInstance();
 
-// Permet de stocker les require dans la variable $content
-$content = ob_get_clean();
-require '../pages/templates/template.php';
+var_dump($appli);
+var_dump($config = App\Config::getInstance()->get('db_user'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//if(isset($_GET['p'])) {
+//    $p = $_GET['p'];
+//} else {
+//    $p = 'home';
+//}
+//
+//ob_start();
+//if($p === 'home') {
+//    require '../pages/home.php';
+//} elseif($p === 'article') {
+//    require '../pages/article.php';
+//} elseif ($p === 'categorie') {
+//    require '../pages/categorie.php';
+//} elseif ($p === 'login') {
+//    require '../pages/login.php';
+//} elseif ($p === '404') {
+//    require '../pages/page404.php';
+//}
+//
+//// Permet de stocker les require dans la variable $content
+//$content = ob_get_clean();
+//require '../pages/templates/template.php';
 
 ?>
 
