@@ -1,12 +1,13 @@
 <!-- Index du site -->
 <?php
-// Chargement de l'autoloader
-require '../app/Autoloader.php';
-App\Autoloader::register();
+define('ROOT', dirname(__DIR__));
+require_once(ROOT . '/app/Appli.php');
+// Permet de charger l'autoloader depuis Appli
+Appli::load();
+
+$appli = Appli::getInstance();
 
 // *** nouvel index.php en utilisant le fichier Config.php
-
-$appli = App\Appli::getInstance();
 
 $posts = $appli->getTable('Articles');
 //$posts = $appli->getTable('Categories');

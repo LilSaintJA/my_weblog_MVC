@@ -9,27 +9,27 @@ class Config {
     private $settings = [];
     private static $_instance;
 
-
     /**
      * Retourne l'instance de l'objet
      * Evite d'instancier à chaque fois qu'on a besoin de l'objet
+     * @param  [string] $file [Le fichier à charger]
      * @return [object] [Retourne une instance de l'objet]
      */
-    public static function getInstance() {
+    public static function getInstance($file) {
         // Permet de n'avoir qu'une seule instance de l'objet
         if (is_null(self::$_instance)) {
-            self::$_instance = new Config();
+            self::$_instance = new Config($file);
         }
         return self::$_instance;
     }
-
+    
     /**
      * Constructeur de l'objet
      * @private Initialise le fichier config.php contenant les infos de la BDD
+     * @param [string] $file [Le fichier à charger lors de la construction de l'objet]
      */
     public function __construct($file) {
-        $this->id = uniqid();
-        $this->settings = require_once($file)cd ../;
+        $this->settings = require_once($file);
     }
 
     /**
