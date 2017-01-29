@@ -29,7 +29,7 @@ class Config {
      */
     public function __construct($file) {
         $this->id = uniqid();
-        $this->settings = require_once($file);
+        $this->settings = require_once($file)cd ../;
     }
 
     /**
