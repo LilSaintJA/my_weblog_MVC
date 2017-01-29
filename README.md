@@ -1,3 +1,3 @@
 # my_weblog_MVC
 
-Voici mon 1er essaie de création d'un blog avec une architecture MVC
+Développement d'un système basé sur les Singleton et les Factory

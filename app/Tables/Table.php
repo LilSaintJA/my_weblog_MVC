@@ -21,6 +21,10 @@ class Table {
             $this->table = strtolower(str_replace('Table', '', $class_name));
         }
     }
+    
+    public function query($statement) {
+        
+    }
 
 }
 

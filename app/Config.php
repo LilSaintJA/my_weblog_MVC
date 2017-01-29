@@ -35,7 +35,7 @@ class Config {
     /**
      * Permet de récupérer la clef à obtenir
      * @param  [string] $key [La clef du tableau contenu dans $settings]
-     * @return [string] [Retourne la clef du tableau sur l'objet]
+     * @return [string] [Retourne la clef du tableau sur l'objet ]
      */
     public function get($key) {
         if (!isset($this->settings[$key])) {
