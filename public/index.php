@@ -8,8 +8,10 @@ App\Autoloader::register();
 
 $appli = App\Appli::getInstance();
 
-var_dump($appli);
-var_dump($config = App\Config::getInstance()->get('db_user'));
+$posts = $appli->getTable('Articles');
+//$posts = $appli->getTable('Categories');
+
+var_dump($posts->all());
 
 
 

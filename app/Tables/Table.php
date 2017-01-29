@@ -1,9 +1,11 @@
 <?php
 namespace App\Tables;
+use \App\Database\Database;
 
 class Table {
 
     protected $table;
+    protected $db;
 
     /**
      * Constructeur de la class Parente Table
@@ -11,7 +13,8 @@ class Table {
      * Sinon récupére le nom de la class définti dans l'enfant
      * @private
      */
-    public function __construct() {
+    public function __construct(Database $db) {
+        $this->db = $db;
         if (is_null($this->table)) {
             // Explose la chaine contenant la class et le namespace
             $table_name = explode('\\', get_class($this));
@@ -21,9 +24,11 @@ class Table {
             $this->table = strtolower(str_replace('Table', '', $class_name));
         }
     }
-    
-    public function query($statement) {
-        
+
+    public function all() {
+        $req = 'SELECT * FROM articles';
+        var_dump($req);
+        return $this->db->query($req);
     }
 
 }

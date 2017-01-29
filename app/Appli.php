@@ -1,8 +1,10 @@
 <?php
 namespace App;
+use \App\Database\MysqlDatabase;
 
 /**
-* Class Database
+* Class Appli 
+* Factory
 * Permet de sauvegarder les configurations à la BDD
 */
 class Appli {
@@ -32,9 +34,8 @@ class Appli {
      * @return [string] [Retourne le nom de la class sans le namespace]
      */
     public function getTable($name) {
-        //        var_dump($name);
         $class_name = '\\App\\Tables\\' . ucfirst($name) . 'Table';
-        return new $class_name();
+        return new $class_name($this->getDB());
     }
 
     /**
@@ -44,7 +45,7 @@ class Appli {
     public function getDB() {
         $config = Config::getInstance();
         if (is_null($this->db_instance)) {
-            $this->db_instance = new Database($config->get('db_name'), $config->get('db_user'), $config->get('db_pass'), $config->get('db_host'));
+            $this->db_instance = new MysqlDatabase($config->get('db_name'), $config->get('db_user'), $config->get('db_pass'), $config->get('db_host'));
         }
         return $this->db_instance;
     }

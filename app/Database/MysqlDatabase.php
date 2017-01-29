@@ -1,5 +1,5 @@
 <?php
-namespace App;
+namespace App\Database;
 
 // Permet de ne pas mettre un \ devant tout les PDO
 use \PDO;
@@ -8,7 +8,7 @@ use \PDO;
 * Class Database
 * Permet de se connecter à la base de donner
 */
-class Database {
+class MysqlDatabase extends Database {
 
     /**
     * @var {string} Permet de récupérer les données pour la connection à la BDD
@@ -49,9 +49,14 @@ class Database {
     * @param $tatementPDO Permet de faire les requêtes à la BDD
     * @param $tatementPDO
     */
-    public function query($statement, $class_name, $one = FALSE) {
+    public function query($statement, $class_name = NULL, $one = FALSE) {
         $req = $this->getPDO()->query(($statement));
-        $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        if($class_name === NULL) {
+            $req->setFetchMode((PDO::FETCH_OBJ));
+        } else {
+            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        }
+        
         if($one) {
             $datas = $req->fetch();
         } else {
