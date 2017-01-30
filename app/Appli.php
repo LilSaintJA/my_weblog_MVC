@@ -9,7 +9,7 @@ use \Core\Database\MysqlDatabase;
 */
 class Appli {
 
-    public $title = 'Mon super site';
+    public $title = 'Mon super blog en MVC';
     private $db_instance;
     private static $_instance;
 
@@ -60,10 +60,21 @@ class Appli {
         }
         return $this->db_instance;
     }
-    
+
+    /**
+     * [[Description]]
+     */
+    public function forbidden() {
+        header('HTTP/1.0 403 Forbidden');
+        die('Acces interdit aux utilisateurs non authentifié');
+    }
+
+    /**
+     * Gére la page 404
+     */
     public function notFound() {
         header("HTTP/1.0 404 Not Found");
-        header('Location:index.php?p=404');
+        die('Page introuvable');
     }
 
 }

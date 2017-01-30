@@ -42,9 +42,10 @@ class Table {
      * @return [[Type]] [[Description]]
      */
     public function find($id) {
+        // Problème à résoudre avec id_cat
         $req = "SELECT * 
         FROM {$this->table} 
-        WHERE $id = ?";
+        WHERE id_cat = ?";
         return $this->query($req, [$id], TRUE);
     }
 
@@ -70,6 +71,41 @@ class Table {
                 $one
             );
         }
+    }
+
+    /**
+     * Fonction qui permet de faire un update en BDD
+     * @param  [int] $id     [Identifiant de l'attribut à update]
+     * @param  [string] $fields [[Description]]
+     * @return [object] [Retourne le query de la requête]
+     */
+    public function update($id, $fields) {
+        $sql_parts = [];
+        $attributes = [];
+        foreach($fields as $k => $v) {
+            $sql_parts[] = "$k = ?";
+            // J'incrémente l'attribut de la valeur trouvé
+            $attributes[] = $v;
+        }
+        $attributes[] = $id;
+        $sql_part = implode(', ', $sql_parts);
+        $req = "UPDATE {$this->table} SET $sql_part WHERE id = ?";
+        return $this->query($req, $attributes, TRUE);
+    }
+
+    /**
+     * Fonction qui permet de lister les enregistrement
+     * @param  [[Type]] $key   [[Description]]
+     * @param  [[Type]] $value [[Description]]
+     * @return [array] [[Description]]
+     */
+    public function liste($key, $value) {
+        $records = $this->all();
+        foreach($records as $k => $v) {
+            $return[$v->$key] = $v->$value;
+        }
+
+        return $return;
     }
 }
 

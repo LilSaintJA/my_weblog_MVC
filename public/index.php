@@ -18,8 +18,8 @@ if($p === 'home') {
     require ROOT . '/pages/articles/article.php';
 } elseif ($p === 'article.categorie') {
     require ROOT . '/pages/articles/categorie.php';
-} elseif ($p === 'article.login') {
-    require ROOT . '/pages/articles/login.php';
+} elseif ($p === 'login') {
+    require ROOT . '/pages/users/login.php';
 } elseif ($p === '404') {
     require ROOT . '/pages/page404.php';
 }

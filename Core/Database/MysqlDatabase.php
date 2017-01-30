@@ -51,12 +51,21 @@ class MysqlDatabase extends Database {
     */
     public function query($statement, $class_name = NULL, $one = FALSE) {
         $req = $this->getPDO()->query(($statement));
+        // Si jamais on a juste query à faire
+        if (
+            strpos($statement, 'UPDATE') === 0 ||
+            strpos($statement, 'INSERT') === 0 ||
+            strpos($statement, 'DELETE') === 0
+        ) {
+            return $req;
+        }
+
         if($class_name === NULL) {
             $req->setFetchMode((PDO::FETCH_OBJ));
         } else {
             $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
         }
-        
+
         if($one) {
             $datas = $req->fetch();
         } else {
@@ -65,10 +74,24 @@ class MysqlDatabase extends Database {
         return $datas;
     }
 
-    public function prepare($statement, $options, $class_name, $one = FALSE) {
+    public function prepare($statement, $attributes, $class_name = NULL, $one = FALSE) {
         $req = $this->getPDO()->prepare($statement);
-        $req->execute($options);
-        $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        $res = $req->execute($attributes);
+        // Si jamais on a juste query à faire
+        if (
+            strpos($statement, 'UPDATE') === 0 ||
+            strpos($statement, 'INSERT') === 0 ||
+            strpos($statement, 'DELETE') === 0
+        ) {
+            return $res;
+        }
+
+        if($class_name === NULL) {
+            $req->setFetchMode((PDO::FETCH_OBJ));
+        } else {
+            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        }
+
         if($one) {
             $datas = $req->fetch();
         } else {

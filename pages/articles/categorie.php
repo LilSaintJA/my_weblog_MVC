@@ -10,7 +10,8 @@ if($categorie === FALSE) {
 $articles = $app->getTable('Article')->lastByCat($_GET['id_cat']);
 $categories = $app->getTable('Category')->all();
 
-//Appli::setTitle($categorie->titre_cat);
+// Change le titre de l'onglet par rapport au titre de la catégorie
+$app->title = $categorie->titre_cat;
 ?>
 
 <!-- Page Categories -->
