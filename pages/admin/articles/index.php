@@ -7,6 +7,10 @@ $posts = Appli::getInstance()->getTable('Article')->all();
 
 <h1>Administrer les articles</h1>
 
+<span>
+    <a href="?p=article.add" class="btn btn-success">Ajouter</a>
+</span>
+
 <table class="table">
     <thead>
         <tr>
@@ -21,7 +25,11 @@ $posts = Appli::getInstance()->getTable('Article')->all();
             <td><?= $post->id ?></td>
             <td><?= $post->titre_post ?></td>
             <td>
-            <a href="?p=article.edit&id=<?= $post->id; ?>" class="btn btn-primary">Edit</a>
+                <a href="?p=article.edit&id=<?= $post->id; ?>" class="btn btn-primary">Edit</a>
+                <form action="?p=article.delete" method="post" class="form-delete">
+                    <input type="hidden" name="id" value="<?= $post->id; ?>">
+                    <button type="submit" href="?p=article.delete&id=<?= $post->id; ?>" class="btn btn-danger">Supprimer</button>
+                </form>
             </td>
         </tr>
         <?php endforeach; ?>

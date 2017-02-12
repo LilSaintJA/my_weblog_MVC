@@ -35,11 +35,16 @@ class BootstrapForm extends Form {
 
     public function select($name, $label, $options) {
         $label = '<label>' . $label . '</label>';
-        $input = '<select class="form-control" name=' . $name . '">';
+        $input = '<select class="form-control" name="' . $name . '">';
         foreach($options as $k => $v) {
-            $input .= "<option value='$k'>$v</option>";
+            $titleSelect = '';
+            if ($k == $this->getValue($name)) {
+                $titleSelect = ' selected';
+            }
+            $input .= "<option value='$k'$titleSelect>$v</option>";
         }
         $input .= '</select>';
+        return $this->surround($label . $input);
     }
 
     /**

@@ -10,9 +10,9 @@ class ArticleTable extends Table {
      * @return array
      */
     public function last() {
-        $req = "SELECT id, titre_post, content_post, categories.titre_cat 
+        $req = "SELECT articles.id, titre_post, content_post, categories.titre_cat 
         FROM articles 
-        LEFT JOIN categories ON articles.id_cat = categories.id_cat ORDER BY date DESC";
+        LEFT JOIN categories ON articles.id_cat = categories.id ORDER BY date DESC";
         return $this->query($req);
     }
 
@@ -21,10 +21,10 @@ class ArticleTable extends Table {
      * @param  [int] $id [ID récupèrer par le $_GET]
      * @return [object] [Une requête préparer] \App\Entity\ArticleEntitygit 
      */
-    public function find($id) {
-        $req = "SELECT id, titre_post, content_post, categories.titre_cat 
+    public function findWithCat($id) {
+        $req = "SELECT articles.id, titre_post, content_post, articles.id_cat, categories.titre_cat 
         FROM articles 
-        LEFT JOIN categories ON articles.id_cat = categories.id_cat
+        LEFT JOIN categories ON articles.id_cat = categories.id
         WHERE articles.id = ?";
         return $this->query($req, [$id], TRUE);
     }
@@ -35,9 +35,9 @@ class ArticleTable extends Table {
      * @return [array ] Retourne le jeu de résultat trouvé par query
      */
     public function lastByCat($id_cat) {
-        $req = "SELECT id, titre_post, content_post, categories.titre_cat 
+        $req = "SELECT articles.id, titre_post, content_post, categories.titre_cat 
         FROM articles 
-        LEFT JOIN categories ON articles.id_cat = categories.id_cat
+        LEFT JOIN categories ON articles.id_cat = categories.id
         WHERE articles.id_cat = ? ORDER BY date ASC";
         return $this->query($req, [$id_cat]);
     }

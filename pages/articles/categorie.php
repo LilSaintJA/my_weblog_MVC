@@ -1,13 +1,13 @@
 <?php
 
 $app = Appli::getInstance();
-$categorie = $app->getTable('Category')->find($_GET['id_cat']);
+$categorie = $app->getTable('Category')->find($_GET['id']);
 
 if($categorie === FALSE) {
     $app->notFound();
 }
 
-$articles = $app->getTable('Article')->lastByCat($_GET['id_cat']);
+$articles = $app->getTable('Article')->lastByCat($_GET['id']);
 $categories = $app->getTable('Category')->all();
 
 // Change le titre de l'onglet par rapport au titre de la catégorie

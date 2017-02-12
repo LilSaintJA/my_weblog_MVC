@@ -8,7 +8,8 @@ $postTable = Appli::getInstance()->getTable('Article');
 if (!empty($_POST)) {
     $result = $postTable->update($_GET['id'], [
         'titre_post' => $_POST['titre_post'],
-        'content_post' => $_POST['content_post']
+        'content_post' => $_POST['content_post'],
+        'id_cat' => $_POST['id_cat']
     ]);
 
     if ($result) {
@@ -16,12 +17,11 @@ if (!empty($_POST)) {
 <div class="alert alert-success">L'article à bien été modifié</div>
 <?php
     }
-    var_dump($result);
 }
 
 // Récupére le contenu de l'article
-$post = $postTable->find($_GET['id']);
-$categories = Appli::getInstance()->getTable('Category')->all();
+$post = $postTable->findWithCat($_GET['id']);
+$categories = Appli::getInstance()->getTable('Category')->liste('id_cat', 'titre_cat');
 $form = new BootstrapForm($post);
 
 ?>

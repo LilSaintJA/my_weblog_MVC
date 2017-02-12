@@ -45,7 +45,7 @@ class Table {
         // Problème à résoudre avec id_cat
         $req = "SELECT * 
         FROM {$this->table} 
-        WHERE id_cat = ?";
+        WHERE id = ?";
         return $this->query($req, [$id], TRUE);
     }
 
@@ -76,7 +76,7 @@ class Table {
     /**
      * Fonction qui permet de faire un update en BDD
      * @param  [int] $id     [Identifiant de l'attribut à update]
-     * @param  [string] $fields [[Description]]
+     * @param  [string] $fields [Champ à update]
      * @return [object] [Retourne le query de la requête]
      */
     public function update($id, $fields) {
@@ -92,6 +92,36 @@ class Table {
         $req = "UPDATE {$this->table} SET $sql_part WHERE id = ?";
         return $this->query($req, $attributes, TRUE);
     }
+    
+    /**
+     * Fonction qui permet de faire un create en BDD
+     * @param  [int] $id     [Identifiant de l'attribut à update]
+     * @param  [string] $fields [Champ à créer]
+     * @return [object] [Retourne le query de la requête]
+     */
+    public function create($fields) {
+        $sql_parts = [];
+        $attributes = [];
+        foreach($fields as $k => $v) {
+            $sql_parts[] = "$k = ?";
+            // J'incrémente l'attribut de la valeur trouvé
+            $attributes[] = $v;
+        }
+        $sql_part = implode(', ', $sql_parts);
+        $req = "INSERT INTO {$this->table} SET $sql_part";
+        return $this->query($req, $attributes, TRUE);
+    }
+    
+    /**
+     * Fonction qui permet de faire un update en BDD
+     * @param  [int] $id     [Identifiant de l'attribut à update]
+     * @param  [string] $fields [Champ à update]
+     * @return [object] [Retourne le query de la requête]
+     */
+    public function delete($id) {
+        $req = "DELETE FROM {$this->table} WHERE id = ?";
+        return $this->query($req, [$id], TRUE);
+    }
 
     /**
      * Fonction qui permet de lister les enregistrement
@@ -101,7 +131,7 @@ class Table {
      */
     public function liste($key, $value) {
         $records = $this->all();
-        foreach($records as $k => $v) {
+        foreach($records as $v) {
             $return[$v->$key] = $v->$value;
         }
 

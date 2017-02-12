@@ -74,6 +74,14 @@ class MysqlDatabase extends Database {
         return $datas;
     }
 
+    /**
+     * [[Description]]
+     * @param  [[Type]] $statement           [[Description]]
+     * @param  [[Type]] $attributes          [[Description]]
+     * @param  [[Type]] [$class_name = NULL] [[Description]]
+     * @param  [[Type]] [$one = FALSE]       [[Description]]
+     * @return [[Type]] [[Description]]
+     */
     public function prepare($statement, $attributes, $class_name = NULL, $one = FALSE) {
         $req = $this->getPDO()->prepare($statement);
         $res = $req->execute($attributes);
@@ -99,6 +107,14 @@ class MysqlDatabase extends Database {
 
         }
         return $datas;
+    }
+
+    /**
+     * Permet de récupèrer le dernier ID insérer en BDD
+     * @return [[Type]] [[Description]]
+     */
+    public function lastInsertId() {
+        return $this->getPDO()->lastInsertId();
     }
 
 }

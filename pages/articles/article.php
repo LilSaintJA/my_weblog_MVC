@@ -2,7 +2,7 @@
 <?php
 
 $app = Appli::getInstance();
-$article = $app->getTable('Article')->find($_GET['id']);
+$article = $app->getTable('Article')->findWithCat($_GET['id']);
 
 if($article === FALSE) {
     $app->notFound();
