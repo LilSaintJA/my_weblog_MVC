@@ -7,7 +7,7 @@ use \Core\Entity\Entity;
 class CategoryEntity extends Entity {
     
     public function getUrl() {
-        return 'index.php?p=article.categorie&id=' . $this->id;
+        return 'index.php?p=articles.category&id=' . $this->id;
     }
     
 }

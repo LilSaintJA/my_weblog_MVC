@@ -6,8 +6,12 @@ use \Core\Entity\Entity;
 
 class ArticleEntity extends Entity {
     
+    /**
+     * [[Description]]
+     * @return string [[Description]]
+     */
     public function getUrl() {
-        return 'index.php?p=article.show&id=' . $this->id;
+        return 'index.php?p=articles.show&id=' . $this->id;
     }
     
     /**
