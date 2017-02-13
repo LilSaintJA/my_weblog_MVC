@@ -31,8 +31,8 @@ class Table {
      * @return {object PDO} Retourne le result de la requête
      */
     public function all() {
-        $req = 'SELECT * FROM ' . $this->table;
-        //        var_dump($req);
+        $req = "SELECT * FROM {$this->table}";
+        var_dump($req);
         return $this->query($req);
     }
 
@@ -92,7 +92,7 @@ class Table {
         $req = "UPDATE {$this->table} SET $sql_part WHERE id = ?";
         return $this->query($req, $attributes, TRUE);
     }
-    
+
     /**
      * Fonction qui permet de faire un create en BDD
      * @param  [int] $id     [Identifiant de l'attribut à update]
@@ -111,7 +111,7 @@ class Table {
         $req = "INSERT INTO {$this->table} SET $sql_part";
         return $this->query($req, $attributes, TRUE);
     }
-    
+
     /**
      * Fonction qui permet de faire un update en BDD
      * @param  [int] $id     [Identifiant de l'attribut à update]
