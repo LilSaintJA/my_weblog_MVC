@@ -2,7 +2,7 @@
 <h1>Administrer les articles</h1>
 
 <span>
-    <a href="?p=admin.articles.add" class="btn btn-success">Ajouter</a>
+    <a href="?p=admin.categories.add" class="btn btn-success">Ajouter</a>
 </span>
 
 <table class="table">
@@ -19,10 +19,10 @@
             <td><?= $post->id ?></td>
             <td><?= $post->titre_post ?></td>
             <td>
-                <a href="?p=admin.articles.edit&id=<?= $post->id; ?>" class="btn btn-primary">Edit</a>
-                <form action="?p=article.delete" method="post" class="form-delete">
+                <a href="?p=admin.categories.edit&id=<?= $post->id; ?>" class="btn btn-primary">Edit</a>
+                <form action="?p=admin.categories.delete" method="post" class="form-delete">
                     <input type="hidden" name="id" value="<?= $post->id; ?>">
-                    <button type="submit" href="?p=article.delete&id=<?= $post->id; ?>" class="btn btn-danger">Supprimer</button>
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
                 </form>
             </td>
         </tr>

@@ -14,8 +14,13 @@ if(isset($_GET['p'])) {
 // Permet de séparer l'url, d'un côté le controller de l'autre la view
 $p = explode('.', $p);
 
-$action = $p[1];
-$controller = '\App\Controller\\' . ucfirst($p[0]) . 'Controller';
+if($p[0] === 'admin') {
+    $controller = '\App\Controller\Admin\\' . ucfirst($p[1]) . 'Controller';
+    $action = $p[2];
+} else {
+    $controller = '\App\Controller\\' . ucfirst($p[0]) . 'Controller';
+    $action = $p[1];
+}
 $controller = new $controller();
 $controller->$action();
 

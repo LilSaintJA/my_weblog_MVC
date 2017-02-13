@@ -1,7 +1,3 @@
-<?php if($errors): ?>
-<div class="alert alert-success">L'article à bien été modifié</div>
-<?php endif; ?>
-
 <form action="" method="post">
 
     <?= $form->input('titre_post', 'Titre de l\'article'); ?>
