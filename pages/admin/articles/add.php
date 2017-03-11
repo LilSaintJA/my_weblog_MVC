@@ -18,7 +18,7 @@ if (!empty($_POST)) {
 }
 
 // Récupére le contenu de l'article
-$categories = Appli::getInstance()->getTable('Category')->liste('id_cat', 'titre_cat');
+$categories = Appli::getInstance()->getTable('Category')->liste('id', 'titre_cat');
 $form = new BootstrapForm($_POST);
 
 ?>
