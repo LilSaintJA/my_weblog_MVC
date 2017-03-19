@@ -2,7 +2,7 @@
 <h1>Administrer les articles</h1>
 
 <span>
-    <a href="?p=admin.categories.add" class="btn btn-success">Ajouter</a>
+    <a href="?p=admin.articles.add" class="btn btn-success">Ajouter</a>
 </span>
 
 <table class="table">

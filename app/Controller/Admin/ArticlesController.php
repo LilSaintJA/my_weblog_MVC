@@ -25,8 +25,10 @@ class ArticlesController extends AppController {
                 'content_post' => $_POST['content_post'],
                 'id_cat' => $_POST['id_cat']
             ]);
-
+            var_dump($result);
             if ($result) {
+                var_dump($result);
+//                die();
                 return $this->index();
             }
         }

@@ -32,7 +32,6 @@ class Table {
      */
     public function all() {
         $req = "SELECT * FROM {$this->table}";
-        var_dump($req);
         return $this->query($req);
     }
 
